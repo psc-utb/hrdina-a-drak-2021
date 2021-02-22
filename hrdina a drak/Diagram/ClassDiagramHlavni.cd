@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="hrdina_a_drak.Postavy.Drak">
+    <Position X="5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Postavy\Drak.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="hrdina_a_drak.Postavy.Hrdina">
+    <Position X="2.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Postavy\Hrdina.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="hrdina_a_drak.Program">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="hrdina_a_drak.Postavy.Vlk">
+    <Position X="7.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAIAQIAAAEEABAAAAAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>Postavy\Vlk.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Tym" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="hrdina_a_drak.Postavy.Postava" Collapsed="true">
+    <Position X="3.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAAAQIAAAEEABAQAAAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>Postavy\Postava.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="hrdina_a_drak.Tym">
+    <Position X="7.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAgAAA=</HashCode>
+      <FileName>Tym.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
