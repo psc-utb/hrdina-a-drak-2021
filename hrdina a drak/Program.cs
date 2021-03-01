@@ -1,4 +1,5 @@
 ﻿using hrdina_a_drak.Postavy;
+using hrdina_a_drak.Veci;
 using System;
 using System.Collections.Generic;
 
@@ -8,10 +9,16 @@ namespace hrdina_a_drak
     {
         static void Main(string[] args)
         {
+            //vybava
+            Mec mec1 = new Mec("Stříbrný meč", 2.5, 175);
+            Mec mec2 = new Mec("Daedrický meč", 4, 150);
+            Stit stit2 = new Stit("Elfský štít", 2.5, 150);
+
+            //hrdinove a draci
             Hrdina hrdina = new Hrdina("Geralt", 200, 175, 50);
             Drak drak = new Drak("Alduin", 350, 100, 40);
             Drak drak2 = new Drak("Šmak", 450, 75, 25);
-            Hrdina hrdina2 = new Hrdina("Dovakhin", 150, 75, 35);
+            Hrdina hrdina2 = new Hrdina("Dovahkiin", 150, 75, 35, mec1);
             //Vlk vlk = new Vlk("Vlk", 50);
 
 

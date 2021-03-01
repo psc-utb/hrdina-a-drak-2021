@@ -1,4 +1,5 @@
-﻿using System;
+﻿using hrdina_a_drak.Veci;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,28 +7,36 @@ namespace hrdina_a_drak.Postavy
 {
     public class Hrdina : Postava
     {
-        public Hrdina(string jmeno, int zdravi, int maxPoskozeni, int maxObrana) : base(jmeno, zdravi, maxPoskozeni, maxObrana)
+        public Mec Mec { get; set; }
+        public Stit Stit { get; set; }
+
+        public Hrdina(string jmeno, int zdravi, int maxPoskozeni, int maxObrana, Mec mec, Stit stit = null) : base(jmeno, zdravi, maxPoskozeni, maxObrana)
+        {
+            this.Mec = mec;
+            this.Stit = stit;
+        }
+
+        public Hrdina(int zdravi, int maxPoskozeni, int maxObrana) : base (String.Empty, zdravi, maxPoskozeni, maxObrana)
         {
 
         }
 
-        //v rodičovské třídě Postava: změna z private na protected, protože se budeme chtít dostat na generování i v odvozené třídě
-        //protected Random generovani = new Random();
-
-        //v rodičovské třídě Postava: změna v metodě útok -> reference je Postava a v text byl přepsán do neutrální formy
-        /*public void Utok(Postava oponent)
+        public Hrdina(string jmeno, int zdravi, int maxPoskozeni, int maxObrana) : this(jmeno, zdravi, maxPoskozeni, maxObrana, null, null)
         {
-            int poskozeni = Convert.ToInt32(generovani.NextDouble() * MaxPoskozeni);
-            int obrana = oponent.Obrana();
-            poskozeni -= obrana;
-            oponent.Zdravi -= poskozeni;
 
-            Console.WriteLine($"Utok {Jmeno} v hodnotě: " + poskozeni);
-            Console.WriteLine($"Oponentovi jménem {oponent.Jmeno} zbývá zdraví o hodnotě: " + oponent.Zdravi);
-        }*/
+        }
 
-        //v rodičovské třídě Postava: změna v metodě Obrana: jen změna vypisovaného textu
-        //Console.WriteLine($"Obrana postavy jménem {Jmeno} v hodnotě: " + obrana);
+        public new void Utok(Postava oponent)
+        {
+            //přidání poškození meče je na vás, toto jen volá stejnou metodu z rodičovské třídy Postava
+            base.Utok(oponent);
+        }
+
+        public new int Obrana()
+        {
+            //přidání obrany štítu je na vás, toto jen volá stejnou metodu z rodičovské třídy Postava
+            return base.Obrana();
+        }
 
     }
 }
