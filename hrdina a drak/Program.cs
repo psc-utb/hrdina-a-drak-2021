@@ -14,6 +14,8 @@ namespace hrdina_a_drak
             Mec mec2 = new Mec("Daedrický meč", 4, 150);
             Stit stit2 = new Stit("Elfský štít", 2.5, 150);
 
+
+            //Postava postava = new Postava("", 545, 484, 48);
             //hrdinove a draci
             Hrdina hrdina = new Hrdina("Geralt", 200, 175, 50);
             Drak drak = new Drak("Alduin", 350, 100, 40);

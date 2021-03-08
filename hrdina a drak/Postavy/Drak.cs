@@ -10,5 +10,10 @@ namespace hrdina_a_drak.Postavy
         {
 
         }
+
+        protected override bool KontrolaVyberuOponenta(Postava oponent)
+        {
+            return oponent.GetType() != this.GetType();
+        }
     }
 }

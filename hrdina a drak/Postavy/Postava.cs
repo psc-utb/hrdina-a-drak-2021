@@ -4,7 +4,7 @@ using System.Text;
 
 namespace hrdina_a_drak.Postavy
 {
-    public class Postava
+    public abstract class Postava
     {
         public string Jmeno { get; set; }
         public int Zdravi { get; set; }
@@ -21,7 +21,7 @@ namespace hrdina_a_drak.Postavy
             this.MaxObrana = maxObrana;
         }
 
-        public void Utok(Postava oponent)
+        public virtual void Utok(Postava oponent)
         {
             int poskozeni = Convert.ToInt32(generovani.NextDouble() * MaxPoskozeni);
             int obrana = oponent.Obrana();
@@ -32,7 +32,7 @@ namespace hrdina_a_drak.Postavy
             Console.WriteLine($"Oponentovi jménem {oponent.Jmeno} zbývá zdraví o hodnotě: " + oponent.Zdravi);
         }
 
-        public int Obrana()
+        public virtual int Obrana()
         {
             int obrana = 0;
             //postava se brani, pokud dojde k vygenerovani 0,5 a výš
@@ -57,18 +57,13 @@ namespace hrdina_a_drak.Postavy
             }
         }
 
-        public Postava VyberOponenta(List<Postava> postavy)
+        public virtual Postava VyberOponenta(List<Postava> postavy)
         {
             Postava oponent = null;
 
             foreach(var postava in postavy)
             {
-                if (this is Hrdina && postava is Drak && postava.JeZiva())
-                {
-                    oponent = postava;
-                    break;
-                }
-                else if (this is Drak && postava is Hrdina && postava.JeZiva())
+                if (this != postava && postava.JeZiva() && KontrolaVyberuOponenta(postava))
                 {
                     oponent = postava;
                     break;
@@ -77,5 +72,8 @@ namespace hrdina_a_drak.Postavy
 
             return oponent;
         }
+
+        protected abstract bool KontrolaVyberuOponenta(Postava oponent);
+
     }
 }
