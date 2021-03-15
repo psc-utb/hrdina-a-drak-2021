@@ -17,7 +17,7 @@ namespace hrdina_a_drak
 
             //Postava postava = new Postava("", 545, 484, 48);
             //hrdinove a draci
-            Hrdina hrdina = new Hrdina("Geralt", 200, 175, 50);
+            Hrdina hrdina = new Hrdina("Geralt", 500, 175, 50);
             Drak drak = new Drak("Alduin", 350, 100, 40);
             Drak drak2 = new Drak("Šmak", 450, 75, 25);
             Hrdina hrdina2 = new Hrdina("Dovahkiin", 150, 75, 35, mec1);
@@ -31,7 +31,7 @@ namespace hrdina_a_drak
             postavy.Add(hrdina2);
 
 
-            for (int i = 0; PocetZivychHrdinu(postavy) > 0 && PocetZivychDraku(postavy) > 0; ++i)
+            for (int i = 0; JeMozneVybratOponenta(postavy); ++i)
             {
                 Console.WriteLine("Kolo č. " + i);
 
@@ -51,6 +51,24 @@ namespace hrdina_a_drak
                 }
             }
 
+            Console.WriteLine("Vítězové:");
+            foreach(var pos in postavy)
+            {
+                if(pos.JeZiva())
+                {
+                    Console.WriteLine(pos.ToString());
+                }
+            }
+            Console.WriteLine("Poražení:");
+            foreach (var pos in postavy)
+            {
+                if (!pos.JeZiva())
+                {
+                    Console.WriteLine(pos.ToString());
+                }
+            }
+
+            /*
             if (PocetZivychHrdinu(postavy) > 0)
             {
                 Console.WriteLine("hrdinové vyhráli");
@@ -59,13 +77,26 @@ namespace hrdina_a_drak
             {
                 Console.WriteLine("draci vyhráli");
             }
-            /*else
+            else
             {
                 Console.WriteLine("Nikdo nevyhrál");
             }*/
 
         }
 
+        public static bool JeMozneVybratOponenta(List<Postava> postavy)
+        {
+            foreach (Postava postava in postavy)
+            {
+                if (postava.JeZiva() && postava.ExistujeOponent(postavy))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        /*
         public static int PocetZivychHrdinu(List<Postava> postavy)
         {
             int pocetZivychHrdinu = 0;
@@ -90,6 +121,6 @@ namespace hrdina_a_drak
                 }
             }
             return pocetZivychHrdinu;
-        }
+        }*/
     }
 }

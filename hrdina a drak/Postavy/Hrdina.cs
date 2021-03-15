@@ -42,5 +42,20 @@ namespace hrdina_a_drak.Postavy
         {
             return true;
         }
+
+        public override Postava VyberOponenta(List<Postava> postavy)
+        {
+            for (int i = 0; i < postavy.Count * 2; ++i)
+            {
+                int indexVygenerovany = generovani.Next(0, postavy.Count);
+                if(this != postavy[indexVygenerovany] && postavy[indexVygenerovany].JeZiva() && KontrolaVyberuOponenta(postavy[indexVygenerovany]))
+                {
+                    return postavy[indexVygenerovany];
+                }
+            }
+
+
+            return base.VyberOponenta(postavy);
+        }
     }
 }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace hrdina_a_drak.Postavy
 {
-    public abstract class Postava
+    public abstract class Postava : Object
     {
         public string Jmeno { get; set; }
         public int Zdravi { get; set; }
@@ -59,9 +59,21 @@ namespace hrdina_a_drak.Postavy
 
         public virtual Postava VyberOponenta(List<Postava> postavy)
         {
+            return VyberOponentaZakladni(postavy);
+        }
+
+        protected abstract bool KontrolaVyberuOponenta(Postava oponent);
+
+        public bool ExistujeOponent(List<Postava> postavy)
+        {
+            return VyberOponentaZakladni(postavy) != null ? true : false;
+        }
+
+        private Postava VyberOponentaZakladni(List<Postava> postavy)
+        {
             Postava oponent = null;
 
-            foreach(var postava in postavy)
+            foreach (var postava in postavy)
             {
                 if (this != postava && postava.JeZiva() && KontrolaVyberuOponenta(postava))
                 {
@@ -73,7 +85,10 @@ namespace hrdina_a_drak.Postavy
             return oponent;
         }
 
-        protected abstract bool KontrolaVyberuOponenta(Postava oponent);
+        public override string ToString()
+        {
+            return $"Jméno: {Jmeno}, Zdraví: {Zdravi}, Max. Poškození: {MaxPoskozeni}, Max. Obrana: {MaxObrana}";
+        }
 
     }
 }
