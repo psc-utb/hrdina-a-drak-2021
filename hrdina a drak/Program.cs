@@ -30,6 +30,10 @@ namespace hrdina_a_drak
             postavy.Add(drak2);
             postavy.Add(hrdina2);
 
+            postavy.Sort();
+            Console.WriteLine(String.Join(Environment.NewLine, postavy));
+            Console.WriteLine(Environment.NewLine + Environment.NewLine);
+
 
             for (int i = 0; JeMozneVybratOponenta(postavy); ++i)
             {

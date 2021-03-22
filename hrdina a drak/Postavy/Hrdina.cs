@@ -57,5 +57,10 @@ namespace hrdina_a_drak.Postavy
 
             return base.VyberOponenta(postavy);
         }
+
+        public override double VypocitejSilu()
+        {
+            return 0.3 * Zdravi + 0.4 * (MaxPoskozeni + Mec?.Poskozeni ?? 0) + 0.3 * (MaxObrana + Stit?.Zbroj ?? 0);
+        }
     }
 }

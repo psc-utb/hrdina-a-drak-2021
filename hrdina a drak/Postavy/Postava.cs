@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Text;
 
 namespace hrdina_a_drak.Postavy
 {
-    public abstract class Postava : Object
+    public abstract class Postava : Object, IComparable<Postava>
     {
         public string Jmeno { get; set; }
         public int Zdravi { get; set; }
@@ -87,8 +88,21 @@ namespace hrdina_a_drak.Postavy
 
         public override string ToString()
         {
-            return $"Jméno: {Jmeno}, Zdraví: {Zdravi}, Max. Poškození: {MaxPoskozeni}, Max. Obrana: {MaxObrana}";
+            return $"Jméno: {Jmeno}, Síla: {VypocitejSilu()}, Zdraví: {Zdravi}, Max. Poškození: {MaxPoskozeni}, Max. Obrana: {MaxObrana}";
         }
 
+        public int CompareTo([AllowNull] Postava other)
+        {
+            if (other == null)
+                return 1;
+
+            return this.VypocitejSilu().CompareTo(other.VypocitejSilu());
+
+        }
+
+        public virtual double VypocitejSilu()
+        {
+            return 0.2 * Zdravi + 0.4 * MaxPoskozeni + 0.4 * MaxObrana;
+        }
     }
 }
