@@ -1,4 +1,5 @@
-﻿using System;
+﻿using hrdina_a_drak.Nahoda;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Text;
@@ -12,7 +13,7 @@ namespace hrdina_a_drak.Postavy
         public int MaxPoskozeni { get; set; }
         public int MaxObrana { get; set; }
 
-        protected Random generovani = new Random();
+        protected Generator generovani = Generator.Instance;
 
         public Postava(string jmeno, int zdravi, int maxPoskozeni, int maxObrana)
         {

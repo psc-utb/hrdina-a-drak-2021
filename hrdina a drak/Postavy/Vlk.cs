@@ -1,4 +1,5 @@
-﻿using System;
+﻿using hrdina_a_drak.Nahoda;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,7 +7,7 @@ namespace hrdina_a_drak.Postavy
 {
     public class Vlk
     {
-        private Random generovani = new Random();
+        private Generator generovani = Generator.Instance;
 
         public Vlk(string jmeno, int maxPoskozeni)
         {
