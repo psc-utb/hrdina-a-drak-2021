@@ -2,6 +2,7 @@
 using hrdina_a_drak.Veci;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace hrdina_a_drak
 {
@@ -32,6 +33,21 @@ namespace hrdina_a_drak
 
             postavy.Sort();
             Console.WriteLine(String.Join(Environment.NewLine, postavy));
+            Console.WriteLine(Environment.NewLine + Environment.NewLine);
+
+            double prumernaSila = postavy.Average(pos => pos.VypocitejSilu());
+            Console.WriteLine($"Průměrná síla postav: {prumernaSila}");
+
+            double nejmensiSila = postavy.Min(pos => pos.VypocitejSilu());
+            Console.WriteLine($"Nejmenší síla postavy je: {nejmensiSila}");
+            Postava nejslabsiPostava = postavy.Find(postava => postava.VypocitejSilu() == nejmensiSila);
+            Console.WriteLine($"Nejslabší postava je: {nejslabsiPostava.ToString()}");
+
+            List<Postava> silnePostavy = postavy.FindAll(postava => postava.VypocitejSilu() > prumernaSila);
+            Console.WriteLine("Silné postavy (postavy se silou větší než průměr):");
+            Console.WriteLine(String.Join(Environment.NewLine, silnePostavy));
+
+
             Console.WriteLine(Environment.NewLine + Environment.NewLine);
 
 
