@@ -51,6 +51,9 @@ namespace hrdina_a_drak
             Console.WriteLine(Environment.NewLine + Environment.NewLine);
 
 
+            postavy.ForEach(postava => postava.DosloKUtoku += VypisInformaciOUtoku);
+
+
             for (int i = 0; JeMozneVybratOponenta(postavy); ++i)
             {
                 Console.WriteLine("Kolo č. " + i);
@@ -142,5 +145,11 @@ namespace hrdina_a_drak
             }
             return pocetZivychHrdinu;
         }*/
+
+        public static void VypisInformaciOUtoku(Postava utocnik, Postava oponent, int poskozeni, int obrana)
+        {
+            Console.WriteLine($"Utok {utocnik.Jmeno} v hodnotě: " + poskozeni);
+            Console.WriteLine($"Oponentovi jménem {oponent.Jmeno} zbývá zdraví o hodnotě: " + oponent.Zdravi);
+        }
     }
 }

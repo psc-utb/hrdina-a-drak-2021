@@ -15,6 +15,8 @@ namespace hrdina_a_drak.Postavy
 
         protected Generator generovani = Generator.Instance;
 
+        public event Action<Postava, Postava, int, int> DosloKUtoku;
+
         public Postava(string jmeno, int zdravi, int maxPoskozeni, int maxObrana)
         {
             this.Jmeno = jmeno;
@@ -30,8 +32,7 @@ namespace hrdina_a_drak.Postavy
             poskozeni -= obrana;
             oponent.Zdravi -= poskozeni;
 
-            Console.WriteLine($"Utok {Jmeno} v hodnotě: " + poskozeni);
-            Console.WriteLine($"Oponentovi jménem {oponent.Jmeno} zbývá zdraví o hodnotě: " + oponent.Zdravi);
+            DosloKUtoku?.Invoke(this, oponent, poskozeni, obrana);
         }
 
         public virtual int Obrana()
