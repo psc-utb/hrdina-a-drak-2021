@@ -11,9 +11,14 @@ namespace hrdina_a_drak.Postavy
 
         }
 
-        protected override bool KontrolaVyberuOponenta(Postava oponent)
+        public override Postava VyberOponenta(List<Postava> postavy)
         {
-            return oponent.GetType() != this.GetType();
+            return this.VyberOponentaZakladni(postavy, oponent => oponent.GetType() != this.GetType());
+        }
+
+        public override bool ExistujeOponent(List<Postava> postavy)
+        {
+            return base.VyberOponentaZakladni(postavy, oponent => oponent.GetType() != this.GetType()) != null ? true : false;
         }
     }
 }

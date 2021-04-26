@@ -38,17 +38,12 @@ namespace hrdina_a_drak.Postavy
             return base.Obrana();
         }
 
-        protected override bool KontrolaVyberuOponenta(Postava oponent)
-        {
-            return true;
-        }
-
         public override Postava VyberOponenta(List<Postava> postavy)
         {
             for (int i = 0; i < postavy.Count * 2; ++i)
             {
                 int indexVygenerovany = generovani.Next(0, postavy.Count);
-                if(this != postavy[indexVygenerovany] && postavy[indexVygenerovany].JeZiva() && KontrolaVyberuOponenta(postavy[indexVygenerovany]))
+                if(this != postavy[indexVygenerovany] && postavy[indexVygenerovany].JeZiva())
                 {
                     return postavy[indexVygenerovany];
                 }

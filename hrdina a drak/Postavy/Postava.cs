@@ -64,21 +64,31 @@ namespace hrdina_a_drak.Postavy
         {
             return VyberOponentaZakladni(postavy);
         }
+        /*public virtual Postava VyberOponenta(List<Postava> postavy, Predicate<Postava> kontrolaOponenta)
+        {
+            return VyberOponentaZakladni(postavy, kontrolaOponenta);
+        }*/
 
-        protected abstract bool KontrolaVyberuOponenta(Postava oponent);
+        //protected abstract bool KontrolaVyberuOponenta(Postava oponent);
 
-        public bool ExistujeOponent(List<Postava> postavy)
+        public virtual bool ExistujeOponent(List<Postava> postavy)
         {
             return VyberOponentaZakladni(postavy) != null ? true : false;
         }
 
         private Postava VyberOponentaZakladni(List<Postava> postavy)
         {
+            return VyberOponentaZakladni(postavy, null);
+        }
+
+        protected Postava VyberOponentaZakladni(List<Postava> postavy, Predicate<Postava> kontrolaOponenta)
+        {
             Postava oponent = null;
 
             foreach (var postava in postavy)
             {
-                if (this != postava && postava.JeZiva() && KontrolaVyberuOponenta(postava))
+                bool vysledekSpecialniKontrolyOponenta = kontrolaOponenta != null ? kontrolaOponenta(postava) : true;
+                if (this != postava && postava.JeZiva() && vysledekSpecialniKontrolyOponenta)
                 {
                     oponent = postava;
                     break;
