@@ -6,4 +6,7 @@
     <RootNamespace>hrdina_a_drak</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\HrdinaADrak_NETStandard\HrdinaADrak_NETStandard.csproj" />
+  </ItemGroup>
 </Project>
