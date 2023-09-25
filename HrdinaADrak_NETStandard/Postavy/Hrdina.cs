@@ -26,10 +26,10 @@ namespace hrdina_a_drak.Postavy
 
         }
 
-        public override void Utok(Postava oponent)
+        public override int Utok(Postava oponent)
         {
             //přidání poškození meče je na vás, toto jen volá stejnou metodu z rodičovské třídy Postava
-            base.Utok(oponent);
+            return base.Utok(oponent);
         }
 
         public override int Obrana()

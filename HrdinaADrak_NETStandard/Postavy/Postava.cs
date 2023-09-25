@@ -25,7 +25,7 @@ namespace hrdina_a_drak.Postavy
             this.MaxObrana = maxObrana;
         }
 
-        public virtual void Utok(Postava oponent)
+        public virtual int Utok(Postava oponent)
         {
             int poskozeni = Convert.ToInt32(generovani.NextDouble() * MaxPoskozeni);
             int obrana = oponent.Obrana();
@@ -33,6 +33,8 @@ namespace hrdina_a_drak.Postavy
             oponent.Zdravi -= poskozeni;
 
             DosloKUtoku?.Invoke(this, oponent, poskozeni, obrana);
+
+            return poskozeni;
         }
 
         public virtual int Obrana()
