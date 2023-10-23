@@ -9,18 +9,34 @@ namespace hrdina_a_drak.Postavy
     public abstract class Postava : Object, IComparable<Postava>
     {
         public string Jmeno { get; set; }
-        public int Zdravi { get; set; }
+        private int zdravi;
+        public int Zdravi
+        {
+            get
+            {
+                return zdravi;
+            }
+            set
+            {
+                ZdraviZmeneno?.Invoke(zdravi, value);
+                zdravi = value;
+            }
+        }
+        public int MaxZdravi { get; set; }
         public int MaxPoskozeni { get; set; }
         public int MaxObrana { get; set; }
 
         protected Generator generovani = Generator.Instance;
 
         public event Action<Postava, Postava, int, int> DosloKUtoku;
+        public event Action<Postava, int> DosloKObrane;
+        public event Action<int, int> ZdraviZmeneno;
 
         public Postava(string jmeno, int zdravi, int maxPoskozeni, int maxObrana)
         {
             this.Jmeno = jmeno;
             this.Zdravi = zdravi;
+            this.MaxZdravi = zdravi;
             this.MaxPoskozeni = maxPoskozeni;
             this.MaxObrana = maxObrana;
         }
@@ -46,6 +62,8 @@ namespace hrdina_a_drak.Postavy
             {
                 obrana = generovani.Next(0, MaxObrana);
                 Console.WriteLine($"Obrana postavy jménem {Jmeno} v hodnotě: " + obrana);
+
+                DosloKObrane?.Invoke(this, obrana);
             }
             return obrana;
         }
