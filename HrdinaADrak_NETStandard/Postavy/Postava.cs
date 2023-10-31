@@ -18,8 +18,9 @@ namespace hrdina_a_drak.Postavy
             }
             set
             {
-                ZdraviZmeneno?.Invoke(zdravi, value);
+                var zdraviStare = zdravi;
                 zdravi = value;
+                ZdraviZmeneno?.Invoke(zdraviStare, value);
             }
         }
         public int MaxZdravi { get; set; }
